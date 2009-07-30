@@ -1,0 +1,84 @@
+.reordable {
+	display: block;
+	width: 400px;
+	list-style-type: none;
+	border: black 2px solid;
+	padding: 0;
+}
+
+.reordable > li {
+	padding: 5px;
+}
+
+/*
+.reordable ul.actions {
+	visibility: hidden;
+}
+
+.reordable > li:hover ul.actions {
+	visibility: visible;
+}
+*/
+
+.reorder-handle {
+	cursor: move;
+}
+
+.reordable span {
+	font-weight: bolder;
+	display: block;
+}
+
+#menu {
+	float: right;
+	padding-top: 0;
+	margin-top: 0;
+}
+
+ul.actions {
+	list-style-type: none;
+	font-size: 9pt;
+	padding: 0;
+	padding-top: 5px;
+}
+
+ul.actions li {
+	display: inline;
+	margin-right: 4px;
+}
+
+ul.actions a {
+	color: blue;
+	text-decoration: none;
+}
+
+ul.actions a:hover {
+	text-decoration: underline;
+}
+
+.reordable > li {
+	background: #ebebeb url(../images/bg-list.jpg) repeat-x bottom;
+}
+
+li.placeholder {
+	border: 2px #d0d0d0 dashed;
+	height: 30px;
+	background: white none;
+}
+
+.message p {
+	margin: 10px;
+	text-align: center;
+}
+
+.message {
+	width: 100%;
+	position: absolute;
+	top: -3px;
+}
+
+.message div.ui-state-highlight, .message div.ui-state-error {
+	margin: 0 auto;
+	display: block;
+	width: 300px;
+}

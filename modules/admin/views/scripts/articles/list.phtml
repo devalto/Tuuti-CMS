@@ -1,0 +1,60 @@
+<?php
+if (count($this->articles)) {
+	$this->headScript()->appendScript("$(document).ready(function() { $('#articlesbylang').tabs(); });
+");
+?>
+	<a href="<?php echo $this->url(array('action' => 'add')); ?>">Add an article</a>
+	<div id="articlesbylang">
+		<ul>
+<?php
+foreach ($this->languages as $lang) {
+	$this->headScript()->appendScript("makeSortable('list-{$lang['abbrev']}', '{$this->url(array('action' => 'update-priority', 'section-id' => null))}');");
+?>
+			<li><a href="#articles-<?php echo $lang['abbrev']; ?>"><?php echo $lang['value']; ?></a></li>
+
+<?php
+}
+?>
+		</ul>
+<?php
+foreach ($this->articles as $lang => $list) {
+?>
+		<div id="articles-<?php echo $lang; ?>">
+			<ul class="reordable" id="list-<?php echo $lang; ?>">
+<?php
+foreach ($list as $article) {
+?>
+				<li id="article-<?php echo $article['id'] ?>">
+					<span class="reorder-handle"><?php echo $article['title']; ?></span>
+					<ul class="actions">
+						<li><a href="<?php echo $this->url(array('action' => 'update', 'id' => $article['id'], 'section-id' => null)); ?>" class="btn-update">Update</a></li>
+						<li><a href="<?php echo $this->url(array('action' => 'delete', 'id' => $article['id'], 'section-id' => null)); ?>" class="btn-delete confirmation">Delete</a></li>
+					</ul>
+				</li>
+<?php
+}
+?>
+			</ul>
+		</div>
+<?php
+}
+?>
+	</div>
+<?php
+} else {
+?>
+<p>There is no articles for this section. You should <a href="<?php echo $this->url(array('action' => 'add')); ?>">add one</a> though, if you want it to show on your website.</p>
+<?php
+}
+
+$message = null;
+if (count($this->messages) == 1) {
+	$message = $this->messages[0];
+} elseif (count($this->messages) > 1) {
+	$message = '<ul><li>' . join('</li><li>', $this->messages) . '</li></ul>';
+}
+
+if (!is_null($message)) {
+	echo "<script type=\"text/javascript\">statusMessage(\"$message\");</script>";
+}
+?>

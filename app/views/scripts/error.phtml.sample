@@ -1,0 +1,2 @@
+<p><?php echo $this->error_message; ?></p>
+<p>Please, <a href="<?php echo $this->url(array(), 'cms', true); ?>">return to home</a></p>

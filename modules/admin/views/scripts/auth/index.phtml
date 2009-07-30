@@ -1,0 +1,6 @@
+<?php
+echo $this->form;
+
+if (!is_null($this->error)) {
+	echo "<script type=\"text/javascript\">errorMessage(\"{$this->error}\");</script>";
+}

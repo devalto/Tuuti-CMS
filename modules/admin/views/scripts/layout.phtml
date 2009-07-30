@@ -1,0 +1,28 @@
+<?php echo $this->doctype('XHTML1_TRANSITIONAL'); ?>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<?php echo $this->headTitle(); ?>
+	
+	<link rel="stylesheet" type="text/css" href="<?php echo $this->staticUrl('modules/admin/media/stylesheets/styles.css'); ?>" />
+	<link rel="stylesheet" type="text/css" href="<?php echo $this->staticUrl('modules/admin/media/stylesheets/start/jquery-ui-1.7.1.custom.css'); ?>" />
+	<script type="text/javascript" src="<?php echo $this->staticUrl("modules/admin/javascripts/jquery-1.3.2.min.js"); ?>"></script>
+	<script type="text/javascript" src="<?php echo $this->staticUrl("modules/admin/javascripts/jquery-ui-1.7.1.custom.min.js"); ?>"></script>
+	<script type="text/javascript" src="<?php echo $this->staticUrl("modules/admin/javascripts/dd.js"); ?>"></script>
+	<?php echo $this->headScript() ?>
+
+</head>
+<body>
+	<?php if (!isset($this->show_actions) || $this->show_actions) { ?>
+	<ul id="menu" class="actions">
+		<li><a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'index'), 'default', true); ?>">Home</a></li>
+		<li><a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'languages'), 'default', true); ?>">Languages</a></li>
+		<li><a href="<?php echo $this->url(array('module' => 'admin', 'controller' => 'auth', 'action' => 'logout'), 'default', true); ?>">Logout</a></li>
+	</ul>
+	<?php } ?>
+	<h1>Administration</h1>
+
+<?php echo $this->layout()->content; ?>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+<div class="one-article">
+	<h2><?php echo $this->article['title']; ?></h2>
+	<div class="content">
+		<?php echo $this->article['content']; ?>
+
+	</div>
+</div>

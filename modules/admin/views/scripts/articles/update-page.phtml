@@ -1,0 +1,46 @@
+<a href="<?php echo $this->url(array('controller' => 'sections', 'action' => 'index', 'section-id' => null)); ?>">Return to the section list</a>
+<?php
+$tbl_lang = new Tuuti_Language();
+$langs = $tbl_lang->getAvailableLanguages();
+
+$form = $this->form;
+foreach ($form->getElements() as $element) {
+	if ($decorator = $element->getDecorator('label')) {
+		$decorator->setOption('tag', null);
+	}
+}
+
+$this->headScript()->appendScript("$(document).ready(function() {
+$('#articlebylang').tabs();
+});
+");
+
+?>
+<form method="<?php echo $form->getMethod() ?>" action="<?php echo $form->getAction()?>">
+	<div id="articlebylang">
+		<ul>
+<?php foreach($langs as $lang) { ?>
+			<li><a href="#article-<?php echo $lang['abbrev'] ?>"><?php echo $lang['value'] ?></a></li>
+<?php } ?>
+		</ul>
+<?php foreach($langs as $lang) { ?>
+		<div id="article-<?php echo $lang['abbrev'] ?>">
+			<?php echo $form->title->{$lang['abbrev']}->renderLabel() . $form->title->{$lang['abbrev']}->renderViewHelper(); ?><br />
+			<?php echo $form->content->{$lang['abbrev']}->render(); ?>
+		</div>
+<?php } ?>
+	</div>
+    <?php echo $this->formSubmit('submit', 'Save') ?>
+</form>
+<?php
+$message = null;
+if (count($this->messages) == 1) {
+	$message = $this->messages[0];
+} elseif (count($this->messages) > 1) {
+	$message = '<ul><li>' . join('</li><li>', $this->messages) . '</li></ul>';
+}
+
+if (!is_null($message)) {
+	echo "<script type=\"text/javascript\">statusMessage(\"$message\");</script>";
+}
+?>

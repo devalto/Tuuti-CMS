@@ -1,0 +1,9 @@
+<div class="multiple-article">
+<?php foreach ($this->articles as $article): ?>
+	<div class="article" id="article_<?php echo $article['id']; ?>">
+		<h2><?php echo $article['title']; ?></h2>
+		<div class="content"><?php echo $article['content']; ?></div>
+	</div>
+<?php endforeach; ?>
+
+</div>

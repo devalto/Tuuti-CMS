@@ -1,0 +1,48 @@
+<?php
+if (count($this->sections)) {
+?>
+<script type="text/javascript">
+makeSortable('sections', "<?php echo $this->url(array('controller' => 'sections', 'action' => 'update-priority')); ?>");
+</script>
+<ul class="reordable" id="sections">
+<?php
+$i = 1;
+foreach ($this->sections as $section) {
+?>
+		<li id="section-<?php echo $section->id; ?>"<?php echo $i++ % 2 ? " class=\"even\"" : ""; ?>>
+			<span class="reorder-handle"><?php echo $this->escape($section->getName($this->lang->abbrev)); ?></span>
+			<ul class="actions">
+				<?php if ($section->type == Tuuti_Section::MULTIPLE_ARTICLE) { ?>
+				<li><a href="<?php echo $this->url(array('controller' => 'articles', 'action' => 'list', 'section-id' => $section->id)); ?>" class="btn-update">Articles list</a></li>	
+				<?php } else { ?>
+				<li><a href="<?php echo $this->url(array('controller' => 'articles', 'action' => 'update-page', 'section-id' => $section->id)); ?>" class="btn-update">Edit page</a></li>	
+				<?php } ?>
+				<li><a href="<?php echo $this->url(array('action' => 'update', 'id' => $section->id)); ?>" class="btn-update">Properties</a></li>
+				<li><a href="<?php echo $this->url(array('action' => 'delete', 'id' => $section->id)); ?>" class="btn-delete confirmation">Delete</a></li>
+				<li><a target="_blank" href="<?php echo $this->url(array('section' => $section->pretty_url_title), 'cms', true); ?>" class="">View section</a></li>
+			</ul>
+		</li>
+<?php
+}
+?>
+</ul>
+
+<p><a href="<?php echo $this->url(array('action' => 'add')) ?>">Add a section</a></p>
+<?php
+} else {
+?>
+<p>Sorry, there is no section configured yet... you should <a href="<?php echo $this->url(array('action' => 'add')) ?>">add one</a> now before doing anything else.</p>
+<?php
+}
+
+$message = null;
+if (count($this->messages) == 1) {
+	$message = $this->messages[0];
+} elseif (count($this->messages) > 1) {
+	$message = '<ul><li>' . join('</li><li>', $this->messages) . '</li></ul>';
+}
+
+if (!is_null($message)) {
+	echo "<script type=\"text/javascript\">statusMessage(\"$message\");</script>";
+}
+?>

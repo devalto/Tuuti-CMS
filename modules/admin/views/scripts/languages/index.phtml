@@ -1,0 +1,42 @@
+<?php
+if (count($this->languages)) {
+?>
+<script type="text/javascript">
+makeSortable('languages', "<?php echo $this->url(array('controller' => 'languages', 'action' => 'update-priority')); ?>");
+</script>
+<ul class="reordable" id="languages">
+<?php
+$i = 1;
+foreach ($this->languages as $lang) {
+?>
+		<li id="lang-<?php echo $lang->id; ?>"<?php echo $i++ % 2 ? " class=\"even\"" : ""; ?>>
+			<span class="reorder-handle"><?php echo $this->escape($lang->value); ?> (<?php echo $this->escape($lang->abbrev); ?>)</span>
+			<ul class="actions">
+				<li><a href="<?php echo $this->url(array('action' => 'delete', 'id' => $lang->id)); ?>" class="btn-delete confirmation">Delete</a></li>
+				<li><a href="<?php echo $this->url(array('action' => 'update', 'id' => $lang->id)); ?>" class="btn-update">Update</a></li>
+			</ul>
+		</li>
+<?php
+}
+?>
+</ul>
+
+<p><a href="<?php echo $this->url(array('action' => 'add')) ?>">Add a language</a></p>
+<?php
+} else {
+?>
+<p>Sorry, there is no language configured yet... you should <a href="<?php echo $this->url(array('action' => 'add')) ?>">add one</a> now before doing anything else.</p>
+<?php
+}
+
+$message = null;
+if (count($this->messages) == 1) {
+	$message = $this->messages[0];
+} elseif (count($this->messages) > 1) {
+	$message = '<ul><li>' . join('</li><li>', $this->messages) . '</li></ul>';
+}
+
+if (!is_null($message)) {
+	echo "<script type=\"text/javascript\">statusMessage(\"$message\");</script>";
+}
+?>

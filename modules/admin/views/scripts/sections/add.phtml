@@ -1,0 +1,9 @@
+<?php
+
+if ($this->lang_count) {
+	echo $this->form;
+} else {
+?>
+<p>There is no language yet added to your site. You should <a href="<?php echo $this->url(array('controller' => 'languages', 'action' => 'add')); ?>">add one</a> right now</p>
+<?php
+}

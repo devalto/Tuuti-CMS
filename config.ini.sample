@@ -1,0 +1,34 @@
+[default]
+
+application.title = "Tuuti CMS"
+application.modules_dir = "modules"
+
+database.adapter = pdo_mysql
+database.params.host = localhost
+database.params.dbname = tuuti
+database.params.username = root
+database.params.password =
+
+; Configuration of the languages... this is the default config for database
+locale.mode = database
+;locale.config.table = LANGUAGE
+;locale.config.abrevfield = abrev
+;locale.config.priorityfield = priority
+
+; This is the default config for... config file
+;locale.mode = config
+;locale.config.langlist = en
+
+; Config of the sessions
+;session.name = TUUTI_ID
+;session.remember_me_seconds = 31536000
+;session.use_only_cookies = on
+
+; Config of the authentifications
+;authentification.table_name = USERS
+;authentification.identity_column = name
+;authentification.credential_column = password
+;authentification.credential_treatment = "MD5(?)"
+
+[tuuti : default]
+tuuti.title_separator = >
