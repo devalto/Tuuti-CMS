@@ -4,6 +4,7 @@ class Tuuti_Section extends Zend_Db_Table {
 
 	const MULTIPLE_ARTICLE = "MULTIPLE ARTICLE";
 	const ONE_ARTICLE = "ONE ARTICLE";
+	const BLANK = "BLANK";
 
 	const CREATION_DATE = "CREATION DATE";
 	const MODIFICATION_DATE = "MODIFICATION DATE";

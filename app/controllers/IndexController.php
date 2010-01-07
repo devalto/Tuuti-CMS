@@ -34,10 +34,17 @@ class IndexController extends Zend_Controller_Action {
 		if (is_readable($scripts_path . "layout-$lang.phtml")) {
 			$layout->setLayout("layout-$lang");
 		}
-
-		$view_name = 'one-article';
-		if ($row_section->type == Tuuti_Section::MULTIPLE_ARTICLE) {
-			$view_name = 'multiple-article';
+		
+		switch ($row_section->type) {
+			case Tuuti_Section::MULTIPLE_ARTICLE:
+				$view_name = 'multiple-article';
+				break;
+			case Tuuti_Section::BLANK:
+				$view_name = 'blank';
+				Zend_Layout::resetMvcInstance();
+				break;
+			default:
+				$view_name = 'one-article';
 		}
 
 		if (is_readable("{$scripts_path}{$view_name}-{$lang}.phtml")) {

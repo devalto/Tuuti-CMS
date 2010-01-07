@@ -8,6 +8,7 @@ Installation instruction
     ii. layout.phtml.sample to layout.phtml.sample
    iii. multiple-article.phtml.sample to multiple-article.phtml
     iv. one-article.phtml.sample to one-article.phtml
+     v. blank.phtml.sample to blank.phtml
 5. Execute this SQL query :
    INSERT INTO USER VALUES (NULL, 'admin', 'Administrator', MD5('your_password_here'), 1, 'ADMIN');
 

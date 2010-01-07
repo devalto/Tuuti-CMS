@@ -30,6 +30,7 @@ class Tuuti_Section_Form extends Zend_Form {
 		$lst_type->setRequired();
 		$lst_type->addMultiOption('ONE ARTICLE', 'One article');
 		$lst_type->addMultiOption('MULTIPLE ARTICLE', 'Multiple article');
+		$lst_type->addMultiOption('BLANK', 'Blank');
 		$this->addElement($lst_type);
 		
 		$lst_order = new Zend_Form_Element_Select('article_order_field');
