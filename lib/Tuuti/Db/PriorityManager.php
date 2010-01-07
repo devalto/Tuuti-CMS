@@ -86,10 +86,10 @@ class Tuuti_Db_PriorityManager {
 		
 		$tbl_name = $this->_table->info(Zend_Db_Table::NAME);
 		if ($new_priority < $old_priority) {
-			$q = "UPDATE {$tbl_name} SET {$this->_field} = {$this->_field} + 1 WHERE {$this->_field} < ? AND {$this->_field} >= ? $key_cond";
+			$q = "UPDATE {$tbl_name} SET {$this->_field} = {$this->_field} + 1 WHERE {$this->_field} < ? AND {$this->_field} >= ? $key_cond ORDER BY {$this->_field} DESC";
 			$db->query($q, array($old_priority, $new_priority));
 		} elseif ($new_priority > $old_priority) {
-			$q = "UPDATE {$tbl_name} SET {$this->_field} = {$this->_field} - 1 WHERE {$this->_field} <= ? AND {$this->_field} > ? $key_cond";
+			$q = "UPDATE {$tbl_name} SET {$this->_field} = {$this->_field} - 1 WHERE {$this->_field} <= ? AND {$this->_field} > ? $key_cond ORDER BY {$this->_field} ASC";
 			$db->query($q, array($new_priority, $old_priority));
 		}
 		
