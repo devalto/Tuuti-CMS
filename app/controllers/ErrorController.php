@@ -6,8 +6,6 @@ class ErrorController extends Zend_Controller_Action {
 		$this->view->section_name = "An error as occured";
 
 		$errors = $this->_getParam('error_handler');
-		
-		Zend_Debug::dump($errors);
 
 		switch ($errors->type) {
 			case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_CONTROLLER:
