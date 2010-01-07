@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<?php echo $this->layout()->content; ?>
+<?php echo $this->article['content']; ?>
 
 </body>
 </html>
