@@ -1,6 +1,6 @@
 Installation instruction
 
-1. Execute the sql file "sql/init.sql" in a MySQL database.
+1. Execute the sql file "scripts/init.sql" in a MySQL database.
 2. Copy the file config.ini.sample to config.ini
 3. Configure your database in the config file at lines starting with "database."
 4. In folder app/views/scripts, copy
